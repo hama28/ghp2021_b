@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=yes, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="description" content="P県 観光マップ 災害時避難マップ">
+    <title>地理院地図、OpenStreetMapを表示する</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>観光マップ</h1>
+    </header>
+
+    <div id="map"></div>
+
+    <ul class="bottom-menu">
+        <li>
+            <a href="#">
+                <i class="blogicon-home"></i><br><span class="mini-text">お知らせ</span>
+            </a>
+        </li>
+    
+        <li class="menu-width-max">
+            <a href="#">
+                <i class="blogicon-map"></i><br><span class="mini-text">マップ</span>
+            </a>
+        </li>
+    
+        <li>
+            <a href="#">
+                <i class="blogicon-list"></i><br><span class="mini-text">一覧</span>
+            </a>
+        </li>
+    
+        <li>
+            <a href="#">
+            <i class="blogicon-setting"></i><br><span class="mini-text">設定</span></a>
+        </li>
+    </ul>
+
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+    <script>
+        var map = L.map('map').setView([35.688544, 139.764692], 18);
+
+        var gsi = L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
+            attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>地理院タイル</a>"
+        });
+
+        var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: "© <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
+        });
+
+        var baseMaps = {
+            "地理院地図" : gsi,
+            "OpenStreetMap" : osm
+        };
+        L.control.layers(baseMaps).addTo(map);
+        gsi.addTo(map);
+
+        var marker = L.marker([31.653586,131.019111]).addTo(map);
+        marker.bindPopup("曽於市役所").openPopup();
+    </script>
+</body>
+</html>
