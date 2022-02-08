@@ -7,42 +7,52 @@
     <title>P県インフォメーション</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
     <link rel="stylesheet" type="text/css" media="all" href="css/style.css">
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="js/script.js"></script>
 </head>
 <body>
-    <header>
-        <h1>観光マップ</h1>
+    <header id="header">
+        <h1 id="title">観光マップ</h1>
     </header>
 
     <div id="map"></div>
 
-    <ul class="bottom-menu">
-        <li>
+    <ul class="bottom-menu" id="bottom-menu">
+        <li class="menu">
             <a href="#">
-                <i class="blogicon-home"></i><br><span class="mini-text">お知らせ</span>
+                <i class="fas fa-info-circle"></i><br>
+                <span class="mini-text menu-notice">お知らせ</span>
             </a>
         </li>
     
-        <li class="menu-width-max">
+        <li class="menu">
             <a href="#">
-                <i class="blogicon-map"></i><br><span class="mini-text">マップ</span>
+                <i class="fas fa-map-marked-alt"></i><br>
+                <span class="mini-text menu-map">マップ</span>
             </a>
         </li>
     
-        <li>
+        <li class="menu">
             <a href="#">
-                <i class="blogicon-list"></i><br><span class="mini-text">一覧</span>
+                <i class="fas fa-list-ul"></i><br>
+                <span class="mini-text menu-list">一覧</span>
             </a>
         </li>
     
-        <li>
-            <a href="#">
-            <i class="blogicon-setting"></i><br><span class="mini-text">設定</span></a>
+        <li class="menu">
+            <a href="javascript:void(0);" onclick="clickSetting();">
+                <i class="fas fa-user-cog"></i><br>
+                <span class="mini-text menu-setting">設定</span>
+            </a>
         </li>
     </ul>
 
     <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
     <script>
-        var map = L.map('map').setView([35.688544, 139.764692], 18);
+        var map = L.map('map').setView([31.653586,131.019111], 18);
 
         var gsi = L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
             attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>地理院タイル</a>"

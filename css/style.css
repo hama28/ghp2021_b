@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&display=swap');
+
 html, body{
   height: 100%;
+  font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
 }
 
 #map{
@@ -11,8 +14,8 @@ html, body{
 header {
   position: fixed;
   width: 100%;
-  height: 60px;
-  background: #ffb45f;
+  height: 65px;
+  background: #34675C;
   color: #ffffff;
   box-sizing: border-box;
   top: 0;
@@ -28,7 +31,7 @@ h1 {
 }
 
 .mini-text {
-  font-size: 20px;
+  font-size: 18px;
 }
 
 ul.bottom-menu {
@@ -36,13 +39,22 @@ ul.bottom-menu {
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 60px;
+  height: 65px;
   margin: 0;
   padding: 0;
-  background-color: #ffb45f;
-  border-top: 2px solid #808080;
-  border-bottom: 2px solid #808080;
-  z-index: 30;
+  padding-bottom: 5px;
+  background-color: #34675C;
+  /* border-top: 2px solid #808080; */
+  /* border-bottom: 2px solid #808080; */
+  z-index: 1000;
+}
+
+.menu {
+  /* border-right: 1px solid #808080; */
+}
+
+.menu i {
+  padding-bottom: 12px;
 }
 
 ul.bottom-menu li {
@@ -64,4 +76,8 @@ ul.bottom-menu li {
 
 .bottom-menu li a:hover {
   color:#a9a9a9;
+}
+
+a {
+  text-align: center;
 }
