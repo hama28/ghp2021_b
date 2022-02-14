@@ -16,6 +16,7 @@
         src="https://code.jquery.com/jquery-3.6.0.js"
         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
         crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
 </head>
 <body>
     <header id="header">
@@ -55,49 +56,6 @@
     </ul>
 
     <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
-    <script>
-        var map = L.map('map').setView([31.653586,131.019111], 18);
-
-        var gsi = L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
-            attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>地理院タイル</a>"
-        });
-
-        var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: "© <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
-        });
-
-        var sampleIcon = L.icon({
-            iconUrl: 'sample.png',
-            iconRetinaUrl: 'sample.png',
-            iconSize: [50, 50],
-            iconAnchor: [25, 50],
-            popupAnchor: [0, -50],
-        });
-
-        var baseMaps = {
-            "地理院地図" : gsi,
-            "OpenStreetMap" : osm
-        };
-        L.control.layers(baseMaps).addTo(map);
-        gsi.addTo(map);
-
-        $.getJSON("./data/急傾斜地崩壊危険区域データ_鹿児島県_R2_曽於市.geojson", function(data) {
-            var geojson = L.geoJson(data, {
-                onEachFeature: function (feature, layer) {
-                    layer.bindPopup(feature.properties.name);
-                    //console.log(feature.properties.xcoord);
-                    var xcoord = feature.properties.xcoord;
-                    var ycoord = feature.properties.ycoord;
-                    var marker = L.marker([ycoord,xcoord]).addTo(map);
-                    marker.bindPopup("危険区域").openPopup();
-                }
-            });
-            //L.geoJson(geojsonFeature).addTo(map);
-            geojson.addTo(map);
-        });
-
-        var marker = L.marker([31.653586,131.019111]).addTo(map);
-        marker.bindPopup("曽於市役所").openPopup();
-    </script>
+    <script type="text/javascript" src="js/map.js"></script>
 </body>
 </html>
