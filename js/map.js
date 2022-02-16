@@ -140,22 +140,22 @@ function search_route(){
     routing_ctl = L.Routing.control({
         waypoints:[L.latLng(lat_start,lng_start), L.latLng(lat_end, lng_end)],
         routeWhileDragging:true}).addTo(map);
+}
+// ルート終了
+function end_route(){
+    flg = 0;
+    if ( routing_ctl != null ){
+        map.removeControl(routing_ctl); // ルートクリア
+        routing_ctr = null;
     }
-    // ルート終了
-    function end_route(){
-        flg = 0;
-        if ( routing_ctl != null ){
-            map.removeControl(routing_ctl); // ルートクリア
-            routing_ctr = null;
-        }
-        // point削除する
-        if ( marker1 != null ){
-            map.removeLayer(marker1);
-        }
-        if ( marker2 != null ){
-            map.removeLayer(marker2);
-        }
+    // point削除する
+    if ( marker1 != null ){
+        map.removeLayer(marker1);
     }
+    if ( marker2 != null ){
+        map.removeLayer(marker2);
+    }
+}
 // ---- ルート追加 end ----- //
 
 
