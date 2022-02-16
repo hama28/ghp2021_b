@@ -11,6 +11,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- 2022/2/16 ルート追加 -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+    <!-- ルート追加 -->    
     <script type="text/javascript" src="js/script.js"></script>
     <script
         src="https://code.jquery.com/jquery-3.6.0.js"
@@ -21,6 +24,10 @@
 <body>
     <header id="header">
         <h1 id="title">観光マップ</h1>
+        <!-- 2022/2/16 ルート追加 -->
+        <input type="button" value="ルート検索" onclick="search_route();">
+        <input type="button" value="ルート終了" onclick="end_route();">
+        <!-- ルート追加 -->        
     </header>
 
     <div id="map"></div>
@@ -57,5 +64,8 @@
 
     <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
     <script type="text/javascript" src="js/map.js"></script>
+    <!-- 2022/2/16 ルート追加 -->
+    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+    <!-- ルート追加 -->    
 </body>
 </html>
