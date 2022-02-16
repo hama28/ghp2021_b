@@ -95,6 +95,68 @@ $.getJSON("./data/急傾斜地崩壊危険区域データ_鹿児島県_R2_曽於
 var marker = L.marker([31.653586,131.019111]).addTo(map);
 marker.bindPopup("曽於市役所").openPopup();
 
+// 2022/2/16 ルート追加 ------- //
+var marker1 = null;
+var marker2 = null;
+// lat lng設定
+let lat_strat = 0.0;
+let lng_start = 0.0;
+let lat_end = 0.0;
+let lng_end = 0.0;
+let flg = 0;
+map.on('click', function(e){
+    if ( flg == 0 ){
+        lat_start = e.latlng.lat;
+        lng_start = e.latlng.lng;
+        flg += 1;
+        // ルート始点pointの追加
+        marker1 = L.marker([lat_start, lng_start],{title:"始点"});
+        marker1.addTo(map);
+        marker1.bindPopup("スタート").openPopup();
+    }else if ( flg == 1 ) {
+        lat_end = e.latlng.lat;
+        lng_end = e.latlng.lng;
+        flg += 1;
+        // ルート終点pointの追加
+        marker2 = L.marker([lat_end, lng_end],{title:"終点"});
+        marker2.addTo(map);
+        marker2.bindPopup("目的地").openPopup();
+    }else {
+        alert("ルートを選び直すには「ルート終了」ボタンを押して下さい。");
+    }
+})
+// ルート検索
+var routing_ctl = null;
+function search_route(){
+    // 異なる２点のcordinateが得られているかチェック
+    if ( lat_start == 0.0 || lng_start == 0.0 || lat_end == 0.0 || lng_end == 0.0){
+        alert("ルートを選んで下さい");
+        return;
+    }else if (lat_start == lat_end && lng_start == lng_end){
+        alert("ルートを選び直して下さい");
+        return;
+    }
+    // ルート検索
+    routing_ctl = L.Routing.control({
+        waypoints:[L.latLng(lat_start,lng_start), L.latLng(lat_end, lng_end)],
+        routeWhileDragging:true}).addTo(map);
+    }
+    // ルート終了
+    function end_route(){
+        flg = 0;
+        if ( routing_ctl != null ){
+            map.removeControl(routing_ctl); // ルートクリア
+            routing_ctr = null;
+        }
+        // point削除する
+        if ( marker1 != null ){
+            map.removeLayer(marker1);
+        }
+        if ( marker2 != null ){
+            map.removeLayer(marker2);
+        }
+    }
+// ---- ルート追加 end ----- //
 
 
 // TODO:デモでは無し
