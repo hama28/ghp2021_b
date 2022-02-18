@@ -16,9 +16,19 @@ var baseMaps = {
 L.control.layers(baseMaps).addTo(map);
 gsi.addTo(map);
 
+// 土砂崩れアイコン
 var rockfallIcon = L.icon({
     iconUrl: './img/災害記号_土砂崩れ.png',
     iconRetinaUrl: './img/災害記号_土砂崩れ.png',
+    iconSize: [50, 50],
+    iconAnchor: [25, 50],
+    popupAnchor: [0, -50],
+});
+
+// 避難所アイコン
+var shelterIcon = L.icon({
+    iconUrl: './img/避難所.png',
+    iconRetinaUrl: './img/避難所.png',
     iconSize: [50, 50],
     iconAnchor: [25, 50],
     popupAnchor: [0, -50],
@@ -77,6 +87,7 @@ var hazardAreaStyle = {
     "opacity": 0.65
 };
 
+// 急傾斜地崩壊危険区域
 $.getJSON("./data/急傾斜地崩壊危険区域データ_鹿児島県_R2_曽於市.geojson", function(data) {
     var geojson = L.geoJson(data, {
         onEachFeature: function (feature, layer) {
@@ -91,6 +102,19 @@ $.getJSON("./data/急傾斜地崩壊危険区域データ_鹿児島県_R2_曽於
     });
     geojson.addTo(map);
 });
+
+// 避難所
+// $.getJSON("./data/避難施設データ_曽於市.geojson", function(data) {
+//     var geojson = L.geoJson(data, {
+//         onEachFeature: function (feature, layer) {
+//             var lat = feature.properties.fX;
+//             var lng = feature.properties.fY;
+//             var marker = L.marker([lat,lng], {icon: shelterIcon}).addTo(map);
+//             marker.bindPopup(feature.properties.col0).openPopup();
+//         }
+//     });
+//     geojson.addTo(map);
+// });
 
 var marker = L.marker([31.653586,131.019111]).addTo(map);
 marker.bindPopup("曽於市役所").openPopup();
