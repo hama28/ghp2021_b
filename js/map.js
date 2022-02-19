@@ -83,38 +83,9 @@ L.geoJSON(someGeojsonFeature, {
 
 var hazardAreaStyle = {
     "color": "#ff0000",
-    "weight": 5,
+    "weight": 2,
     "opacity": 0.65
 };
-
-// 急傾斜地崩壊危険区域
-$.getJSON("./data/急傾斜地崩壊危険区域データ_鹿児島県_R2_曽於市.geojson", function(data) {
-    var geojson = L.geoJson(data, {
-        onEachFeature: function (feature, layer) {
-            var polygon = turf.polygon(feature.geometry.coordinates[0]);
-            var centroid = turf.centroid(polygon);
-            var lat = centroid.geometry.coordinates[1].toFixed(6);
-            var lng = centroid.geometry.coordinates[0].toFixed(6);
-            var marker = L.marker([lat,lng], {icon: rockfallIcon}).addTo(map);
-            marker.bindPopup(feature.properties.A47_004).openPopup();
-        },
-        style: hazardAreaStyle
-    });
-    geojson.addTo(map);
-});
-
-// 避難所
-// $.getJSON("./data/避難施設データ_曽於市.geojson", function(data) {
-//     var geojson = L.geoJson(data, {
-//         onEachFeature: function (feature, layer) {
-//             var lat = feature.properties.fX;
-//             var lng = feature.properties.fY;
-//             var marker = L.marker([lat,lng], {icon: shelterIcon}).addTo(map);
-//             marker.bindPopup(feature.properties.col0).openPopup();
-//         }
-//     });
-//     geojson.addTo(map);
-// });
 
 var marker = L.marker([31.653586,131.019111]).addTo(map);
 marker.bindPopup("曽於市役所").openPopup();
