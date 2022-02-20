@@ -152,7 +152,7 @@ function end_route(){
     flg = 0;
     if ( routing_ctl != null ){
         map.removeControl(routing_ctl); // ルートクリア
-        routing_ctr = null;
+        routing_ctl = null;
     }
     // point削除する
     if ( marker1 != null ){
