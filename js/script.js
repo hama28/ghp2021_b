@@ -24,9 +24,9 @@ function clickSetting() {
         title.innerText = "避難マップ";
         map_change.innerText = "観光マップ";
         map_change_icon.src = "./img/sightseeing_bag.png";
-        map_change_icon.style = "margin-bottom: 8px; background-color: red;";
-        header.style.backgroundColor = "red";
-        bottom_menu.style.backgroundColor = "red";
+        map_change_icon.style = "margin-bottom: 8px; background-color: #ff4500;";
+        header.style.backgroundColor = "#ff4500";
+        bottom_menu.style.backgroundColor = "#ff4500";
         osm.addTo(map);
         emergency_flg = true;
         addRockfallData();
