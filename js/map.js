@@ -146,9 +146,11 @@ function end_route(){
     // point削除する
     if ( marker1 != null ){
         map.removeLayer(marker1);
+        marker1 = null;
     }
     if ( marker2 != null ){
         map.removeLayer(marker2);
+        marker1 = null;
     }
 }
 // ---- ルート追加 end ----- //
