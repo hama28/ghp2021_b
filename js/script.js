@@ -43,7 +43,7 @@ function clickKankoMap(){
         kankoMap = null;
         return;
     }
-    var geotiff_map = "./data/曽於市観光マップ.tif";
+　　var geotiff_map = "https://file.smellman.org/Soshi_Kankoumap.tif";
     parseGeoraster(geotiff_map).then(georaster => {
         console.log("georaster:", georaster);
 
