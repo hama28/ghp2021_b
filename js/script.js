@@ -67,7 +67,7 @@ function addShelterData(){
                 var lat = feature.properties.fY;
                 var lng = feature.properties.fX;
                 var marker = L.marker([lat,lng], {icon: shelterIcon}).addTo(map);
-                marker.bindPopup(feature.properties.col0).openPopup();
+                marker.bindPopup(feature.properties.col0);
                 marker_list.push(marker);
             }
         });
@@ -85,7 +85,7 @@ function addRockfallData(){
                 var lat = centroid.geometry.coordinates[1].toFixed(6);
                 var lng = centroid.geometry.coordinates[0].toFixed(6);
                 var marker = L.marker([lat,lng], {icon: rockfallIcon}).addTo(map);
-                marker.bindPopup(feature.properties.A47_004).openPopup();
+                marker.bindPopup(feature.properties.A47_004);
                 marker_list.push(marker);
             },
             style: hazardAreaStyle
