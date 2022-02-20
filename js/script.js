@@ -5,9 +5,14 @@ var polygon_list;
 function clickSetting() {
     let header = document.getElementById("header");
     let title = document.getElementById("title");
+    let map_change = document.getElementById("map-change");
+    let map_change_icon = document.getElementById("map-change-icon");
     let bottom_menu = document.getElementById("bottom-menu");
     if (emergency_flg) {
         title.innerText = "観光マップ";
+        map_change.innerText = "避難マップ";
+        map_change_icon.src = "./data/避難所.svg";
+        map_change_icon.style = "margin-bottom: 8px; background-color: white;";
         header.style.backgroundColor = "#34675C";
         bottom_menu.style.backgroundColor = "#34675C";
         map.removeLayer(osm);
@@ -17,6 +22,9 @@ function clickSetting() {
         emergency_flg = false;
     } else {
         title.innerText = "避難マップ";
+        map_change.innerText = "観光マップ";
+        map_change_icon.src = "./img/sightseeing_bag.png";
+        map_change_icon.style = "margin-bottom: 8px; background-color: red;";
         header.style.backgroundColor = "red";
         bottom_menu.style.backgroundColor = "red";
         osm.addTo(map);
