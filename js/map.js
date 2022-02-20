@@ -141,9 +141,11 @@ function search_route(){
         return;
     }
     // ルート検索
-    routing_ctl = L.Routing.control({
-        waypoints:[L.latLng(lat_start,lng_start), L.latLng(lat_end, lng_end)],
-        routeWhileDragging:true}).addTo(map);
+    if ( routing_ctl == null ){ 
+        routing_ctl = L.Routing.control({
+            waypoints:[L.latLng(lat_start,lng_start), L.latLng(lat_end, lng_end)],
+            routeWhileDragging:true}).addTo(map);
+    }
 }
 // ルート終了
 function end_route(){
