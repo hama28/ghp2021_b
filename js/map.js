@@ -34,6 +34,15 @@ var shelterIcon = L.icon({
     popupAnchor: [0, -50],
 });
 
+// 人アイコン
+var humanIcon = L.icon({
+    iconUrl: './img/human.png',
+    iconRetinaUrl: './img/human.png',
+    iconSize: [50, 50],
+    iconAnchor: [25, 50],
+    popupAnchor: [0, -50],
+});
+
 // TODO:重たいので今回は無し
 //$.getJSON("./data/土砂災害警戒区域データ_鹿児島_R1_曾於市.geojson", function(data) {
 //    var geojson = L.geoJson(data, {
@@ -66,7 +75,7 @@ var someGeojsonFeature = {
 // var latlng = L.latLng(31.653586,131.019111);
 
 var geojsonMarkerOptions = {
-    radius: 8,
+    radius: 10,
     fillColor: "#ff7800",
     color: "#000",
     weight: 1,
@@ -87,7 +96,7 @@ var hazardAreaStyle = {
     "opacity": 0.65
 };
 
-var marker = L.marker([31.653586,131.019111]).addTo(map);
+var marker = L.marker([31.653586,131.019111], {icon: humanIcon}).addTo(map);
 marker.bindPopup("曽於市役所").openPopup();
 
 // 2022/2/16 ルート追加 ------- //
