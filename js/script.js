@@ -43,22 +43,25 @@ function clickKankoMap(){
         kankoMap = null;
         return;
     }
-　　var geotiff_map = "https://file.smellman.org/Soshi_Kankoumap.tif";
-    parseGeoraster(geotiff_map).then(georaster => {
-        console.log("georaster:", georaster);
-
-        kankoMap = new GeoRasterLayer({
-            attribution: "Planet",
-            georaster: georaster,
-            resolution: 128
-        });
-        kankoMap.addTo(map);
-        map.fitBounds(kankoMap.getBounds());
-    }); // ここがなかった
+    var geotiff_map = "./data/out.tif";
+    fetch(geotiff_map)
+      .then(response => response.arrayBuffer())
+      .then(arrayBuffer => {
+        parseGeoraster(arrayBuffer).then(georaster => {
+          console.log("georaster:", georaster);
+  
+          kankoMap = new GeoRasterLayer({
+              attribution: "Planet",
+              georaster: georaster,
+              resolution: 128
+          });
+          kankoMap.addTo(map);
+          map.fitBounds(kankoMap.getBounds());
+      })
+    });
     alert("観光マップ");
 }
 // --- 2022/2/20
-
 // 避難所データ
 function addShelterData(){
     $.getJSON("./data/避難施設データ_曽於市.geojson", function(data) {
