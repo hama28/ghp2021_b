@@ -51,6 +51,7 @@ function clickKankoMap(){
         //   console.log("georaster:", georaster);
           kankoMap = new GeoRasterLayer({
               attribution: "Planet",
+              opacity: 0.7,
               georaster: georaster,
               resolution: 128
           });
