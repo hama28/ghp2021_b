@@ -150,7 +150,7 @@ function end_route(){
     }
     if ( marker2 != null ){
         map.removeLayer(marker2);
-        marker1 = null;
+        marker2 = null;
     }
 }
 // ---- ルート追加 end ----- //
