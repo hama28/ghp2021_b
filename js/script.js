@@ -48,8 +48,7 @@ function clickKankoMap(){
       .then(response => response.arrayBuffer())
       .then(arrayBuffer => {
         parseGeoraster(arrayBuffer).then(georaster => {
-          console.log("georaster:", georaster);
-  
+        //   console.log("georaster:", georaster);
           kankoMap = new GeoRasterLayer({
               attribution: "Planet",
               georaster: georaster,
@@ -62,6 +61,7 @@ function clickKankoMap(){
     alert("観光マップを表示中です。しばらくお待ちください。");
 }
 // --- 2022/2/20
+
 // 避難所データ
 function addShelterData(){
     $.getJSON("./data/避難施設データ_曽於市.geojson", function(data) {
