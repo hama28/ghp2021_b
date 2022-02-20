@@ -34,6 +34,31 @@ function clickSetting() {
     }
 }
 
+// --- 2022/2/20 add 観光マップ
+var kankoMap = null;
+function clickKankoMap(){
+    // 既にある場合は削除
+    if ( kankoMap != null ){
+        map.removeLayer(kankoMap);
+        kankoMap = null;
+        return;
+    }
+    var geotiff_map = "./data/曽於市観光マップ.tif";
+    parseGeoraster(geotiff_map).then(georaster => {
+        console.log("georaster:", georaster);
+
+        kankoMap = new GeoRasterLayer({
+            attribution: "Planet",
+            georaster: georaster,
+            resolution: 128
+        });
+        kankoMap.addTo(map);
+        map.fitBounds(kankoMap.getBounds());
+    }); // ここがなかった
+    alert("観光マップ");
+}
+// --- 2022/2/20
+
 // 避難所データ
 function addShelterData(){
     $.getJSON("./data/避難施設データ_曽於市.geojson", function(data) {
