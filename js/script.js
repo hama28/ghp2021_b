@@ -59,7 +59,7 @@ function clickKankoMap(){
           map.fitBounds(kankoMap.getBounds());
       })
     });
-    alert("観光マップ");
+   // alert("観光マップ");
 }
 // --- 2022/2/20
 // 避難所データ
