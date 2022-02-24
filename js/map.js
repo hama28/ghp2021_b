@@ -8,12 +8,23 @@ var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: "© <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
 });
 
+// 2022/2/24 追加
+// オーバーレイ用のタイルレイヤ（観光マップ）
+// opacityで透過度を設定、maxNativeZoomを指定すると、それ以上のズームレベルのタイルデータは、指定のズームレベルのタイル画像を拡大して表示される
+var overmap = L.tileLayer('https://sakuya-izayoi-0518.github.io/ghp_2021/data/xyz/{z}/{x}/{y}.png', { opacity: 0.7, maxNativeZoom: 16,  });
+// -- //
+
 var baseMaps = {
     "地理院地図" : gsi,
     "OpenStreetMap" : osm
 };
 
-L.control.layers(baseMaps).addTo(map);
+// 2022/2/24 追加
+var overlayMaps = {"観光マップ": overmap };
+//L.control.layers(baseMaps).addTo(map);
+L.control.layers(baseMaps,overlayMaps).addTo(map);
+// -- //
+
 gsi.addTo(map);
 
 // 土砂崩れアイコン
