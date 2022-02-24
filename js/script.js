@@ -35,33 +35,48 @@ function clickSetting() {
 }
 
 // --- 2022/2/20 add 観光マップ
-var kankoMap = null;
+// var kankoMap = null;
+// function clickKankoMap(){
+//     // 既にある場合は削除
+//     if ( kankoMap != null ){
+//         map.removeLayer(kankoMap);
+//         kankoMap = null;
+//         return;
+//     }
+//     var geotiff_map = "./data/out.tif";
+//     fetch(geotiff_map)
+//       .then(response => response.arrayBuffer())
+//       .then(arrayBuffer => {
+//         parseGeoraster(arrayBuffer).then(georaster => {
+//         //   console.log("georaster:", georaster);
+//           kankoMap = new GeoRasterLayer({
+//               attribution: "Planet",
+//               opacity: 0.7,
+//               georaster: georaster,
+//               resolution: 128
+//           });
+//           kankoMap.addTo(map);
+//           map.fitBounds(kankoMap.getBounds());
+//       })
+//     });
+//     alert("観光マップを表示中です。しばらくお待ちください。");
+// }
+// --- 2022/2/20
+
+// 2022/2/24 観光マップをoverlayにて追加
+var kankoMapEnable = false;
 function clickKankoMap(){
     // 既にある場合は削除
-    if ( kankoMap != null ){
-        map.removeLayer(kankoMap);
-        kankoMap = null;
+    if ( kankoMapEnable != false ){
+        map.removeLayer(overmap);
+        kankoMapEnable = false;
         return;
     }
-    var geotiff_map = "./data/out.tif";
-    fetch(geotiff_map)
-      .then(response => response.arrayBuffer())
-      .then(arrayBuffer => {
-        parseGeoraster(arrayBuffer).then(georaster => {
-        //   console.log("georaster:", georaster);
-          kankoMap = new GeoRasterLayer({
-              attribution: "Planet",
-              opacity: 0.7,
-              georaster: georaster,
-              resolution: 128
-          });
-          kankoMap.addTo(map);
-          map.fitBounds(kankoMap.getBounds());
-      })
-    });
-    alert("観光マップを表示中です。しばらくお待ちください。");
+    // 観光マップの追加
+    overmap.addTo(map);
+    kankoMapEnable = true;
 }
-// --- 2022/2/20
+// --- //
 
 // 避難所データ
 function addShelterData(){
