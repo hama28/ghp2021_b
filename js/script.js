@@ -1,6 +1,7 @@
 let emergency_flg = false;
 var marker_list = [];
 var polygon_list;
+var route_search_flg = false;
 
 function clickSetting() {
     let header = document.getElementById("header");
@@ -134,8 +135,10 @@ function clickRouteSearch(){
 	if(search_button.style.visibility=="visible"){
 		search_button.style.visibility ="hidden";
         search_end_button.style.visibility ="hidden";
+        route_search_flg = false;
 	}else{
 		search_button.style.visibility ="visible";
         search_end_button.style.visibility ="visible";
+        route_search_flg = true;
 	}
 }

@@ -120,24 +120,26 @@ let lat_end = 0.0;
 let lng_end = 0.0;
 let flg = 0;
 map.on('click', function(e){
-    if ( flg == 0 ){
-        lat_start = e.latlng.lat;
-        lng_start = e.latlng.lng;
-        flg += 1;
-        // ルート始点pointの追加
-        marker1 = L.marker([lat_start, lng_start],{title:"始点"});
-        marker1.addTo(map);
-        marker1.bindPopup("スタート").openPopup();
-    }else if ( flg == 1 ) {
-        lat_end = e.latlng.lat;
-        lng_end = e.latlng.lng;
-        flg += 1;
-        // ルート終点pointの追加
-        marker2 = L.marker([lat_end, lng_end],{title:"終点"});
-        marker2.addTo(map);
-        marker2.bindPopup("目的地").openPopup();
-    }else {
-        alert("ルートを選び直すには「ルート終了」ボタンを押して下さい。");
+    if(route_search_flg){
+        if ( flg == 0 ){
+            lat_start = e.latlng.lat;
+            lng_start = e.latlng.lng;
+            flg += 1;
+            // ルート始点pointの追加
+            marker1 = L.marker([lat_start, lng_start],{title:"始点"});
+            marker1.addTo(map);
+            marker1.bindPopup("スタート").openPopup();
+        }else if ( flg == 1 ) {
+            lat_end = e.latlng.lat;
+            lng_end = e.latlng.lng;
+            flg += 1;
+            // ルート終点pointの追加
+            marker2 = L.marker([lat_end, lng_end],{title:"終点"});
+            marker2.addTo(map);
+            marker2.bindPopup("目的地").openPopup();
+        }else {
+            alert("ルートを選び直すには「ルート終了」ボタンを押して下さい。");
+        }
     }
 })
 // ルート検索
