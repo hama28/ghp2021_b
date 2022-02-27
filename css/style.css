@@ -117,3 +117,9 @@ a {
   cursor: pointer;
 }
 
+#search_button {
+  visibility: hidden;
+}
+#search_end_button {
+  visibility: hidden;
+}

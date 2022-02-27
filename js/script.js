@@ -126,3 +126,16 @@ function removePolygon(){
     map.removeLayer(polygon_list);
     polygon_list = null;
 }
+
+function clickRouteSearch(){
+    const search_button = document.getElementById("search_button");
+    const search_end_button = document.getElementById("search_end_button");
+
+	if(search_button.style.visibility=="visible"){
+		search_button.style.visibility ="hidden";
+        search_end_button.style.visibility ="hidden";
+	}else{
+		search_button.style.visibility ="visible";
+        search_end_button.style.visibility ="visible";
+	}
+}
