@@ -1,5 +1,8 @@
 var map = L.map('map').setView([31.653586,131.019111], 16);
 
+// スケールの表示（左上、メートル表記）
+L.control.scale({imperial:false, position:'topleft'}).addTo(map);
+
 var gsi = L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
     attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>地理院タイル</a>"
 });
