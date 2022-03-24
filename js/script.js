@@ -92,7 +92,7 @@ function addShelterData(){
 
                 // 文字ラベルを表示
                 var divIcon = L.divIcon({
-                    html: '<div class="divicon">' + feature.properties.col0 + '</div>',
+                    html: '<div class="iconTextLabel">' + feature.properties.col0 + '</div>',
                     iconSize: [0, 0],
                     iconAnchor: [25, 0],
                 });

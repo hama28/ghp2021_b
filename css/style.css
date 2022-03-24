@@ -174,7 +174,7 @@ a {
 }
 
 
-.divicon {	/* 文字ラベル */
+.iconTextLabel {	/* 文字ラベル */
 	display: table-cell;
 	color: #f00;
 	background-color: #ff4;

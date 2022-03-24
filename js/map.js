@@ -196,3 +196,17 @@ function end_route(){
 // map.on('locationfound', onLocationFound);
 // map.on('locationerror', onLocationError);
 // map.locate({setView: true, maxZoom: 16, timeout: 20000});
+
+
+// ズーム更新イベント
+map.on('zoom', function () {
+    let zoom_level = map.getZoom(); //ズームレベル取得
+    console.log("ズームレベル:" + zoom_level);
+
+    // お試し：文字ラベルのフォントサイズをズームレベルに変更
+    let getCollection = document.getElementsByClassName("iconTextLabel");
+    let iconTextLabelElements = Array.prototype.slice.call( getCollection );//配列に変換
+    for (let i=0; i < iconTextLabelElements.length; i++) {
+        iconTextLabelElements[i].style.fontSize = zoom_level + "px";
+    }
+});
