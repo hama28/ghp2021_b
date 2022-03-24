@@ -89,6 +89,15 @@ function addShelterData(){
                 var marker = L.marker([lat,lng], {icon: shelterIcon}).addTo(map);
                 marker.bindPopup(feature.properties.col0);
                 marker_list.push(marker);
+
+                // 文字ラベルを表示
+                var divIcon = L.divIcon({
+                    html: '<div class="divicon">' + feature.properties.col0 + '</div>',
+                    iconSize: [0, 0],
+                    iconAnchor: [25, 0],
+                });
+                var marker = L.marker([lat,lng], {icon: divIcon}).addTo(map);
+                marker_list.push(marker);
             }
         });
         geojson.addTo(map);

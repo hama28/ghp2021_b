@@ -172,3 +172,14 @@ a {
 #search_end_button i {
   margin-right: 10px;
 }
+
+
+.divicon {	/* 文字ラベル */
+	display: table-cell;
+	color: #f00;
+	background-color: #ff4;
+	opacity: 0.7;
+	white-space: nowrap;
+	font-size: 12px;
+	font-weight: bold;
+}
